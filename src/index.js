@@ -1,17 +1,13 @@
 import React from 'react';
-import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import './index.css';
-import app from './App.jsx';
+import ReactDOM from 'react-dom';
+import App from './App';
 
 
-ReactDOM.hydrate(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.documentElement
-);
+let renderReact = require('./renderReact.js');
+renderReact(App);
+
 // render((
 //     <BrowserRouter>
 //         <App/>
