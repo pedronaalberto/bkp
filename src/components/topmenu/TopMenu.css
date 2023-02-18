@@ -1,0 +1,22 @@
+h1, h2{
+    color : rgb(231, 231, 231) !important;
+    font-weight: bolder !important;
+}
+
+.top-menu{
+    background-color: #2B085D !important;
+    color: #FFF !important;
+    height: 5rem;
+    border-bottom: 2px solid #ac95dd;
+}
+
+.connect-wallet-button{
+    background-color: #7239EB !important;
+    color: #FFF !important;
+    font-weight: bold;
+    border: #2B085D 1px solid;
+}
+
+.site-logo{
+    height: 60px;
+}
