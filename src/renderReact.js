@@ -2,7 +2,8 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const { createMemoryHistory } = require('history');
 const { Router } = require('react-router');
-const { matchRoutes } = require('react-router-config');
+const { renderRoutes } = require('react-router-config');
+
 const routes = require('./routes');
 
 module.exports = function (app) {
@@ -11,7 +12,7 @@ module.exports = function (app) {
       initialEntries: [req.url],
     });
 
-    const branch = matchRoutes(routes, req.path);
+    const branch = renderRoutes(routes, req.path);
 
     const promises = branch.map(({ route, match }) => {
       if (route.loadData) {

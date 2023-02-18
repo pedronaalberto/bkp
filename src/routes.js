@@ -1,15 +1,11 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import Layout from './layout/Layout.jsx';
+// src/routes.js
 
-const routes = (
-  <div>
-    <Route exact path="/" component={Layout} />
-  </div>
-);
+import { renderRoutes } from "react-router-config";
+import { Switch } from "react-router-dom";
+import routesConfig from "./routesConfig";
 
-export default routes;
+const Routes = () => {
+  return <Switch>{renderRoutes(routesConfig)}</Switch>;
+};
 
-
-
-
+export default Routes;
