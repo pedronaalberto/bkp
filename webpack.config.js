@@ -34,6 +34,8 @@ module.exports = {
         "path": require.resolve("path-browserify"),
         "zlib": require.resolve("browserify-zlib"),
         "http": require.resolve("stream-http"),
+        fs: false,
+        http: require.resolve('stream-http'),
       },
   },
 };

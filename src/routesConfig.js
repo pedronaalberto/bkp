@@ -1,4 +1,5 @@
 // src/routesConfig.js
+import { Layout } from './layout/Layout.jsx';
 
 const routesConfig = [
     {

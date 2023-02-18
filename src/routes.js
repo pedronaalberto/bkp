@@ -4,6 +4,10 @@ import { renderRoutes } from "react-router-config";
 import { Switch } from "react-router-dom";
 import routesConfig from "./routesConfig";
 
+import { BurnsController } from './../server/controllers/burns-controller.js';
+import { Layout } from './layout/Layout.jsx';
+
+
 const routes = [
   {
     path: '/api/burns/all',
