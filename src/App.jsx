@@ -1,20 +1,46 @@
-import React, { useEffect } from 'react';
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from './layout/Layout'
+const routes = require("./routes");
 
-function App() {
+const app = express();
 
-  useEffect(() => {
-    document.title = 'The BonkPark - Have Fun, Burn Bonk';
-  }, []);
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
-  return (
-    <>
-    <Layout />
-    </>
-  );
-}
+// connect to mongodb database
+mongoose.connect("mongodb://localhost:27017/bonkpark", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("Connected successfully to MongoDB");
+});
 
-export default App;
+// API routes
+app.use("/api", routes);
+
+// set up a 404 error middleware
+app.use((req, res, next) => {
+  const error = new Error("Not found");
+  error.status = 404;
+  next(error);
+});
+
+// error middleware
+app.use((error, req, res, next) => {
+  res.status(error.status || 500).json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
+module.exports = app;

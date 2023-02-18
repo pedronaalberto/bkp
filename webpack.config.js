@@ -23,5 +23,20 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    fallback: {
+        "fs": false,
+        "os": false,
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "buffer": require.resolve("buffer/"),
+        "util": require.resolve("util/"),
+        "https": require.resolve("https-browserify"),
+        "path": require.resolve("path-browserify"),
+        "zlib": require.resolve("browserify-zlib"),
+        "http": require.resolve("stream-http"),
+      },
   },
 };
+
+const path = require('path');
+const webpack = require('webpack');
